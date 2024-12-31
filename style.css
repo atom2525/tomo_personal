@@ -811,30 +811,42 @@ footer a {
 /*お問い合わせボタン
 ---------------------------------------------------------------------------*/
 
-.floating-banner {
-	position: fixed;
-	bottom: 20px;
-	left: 50%;
-	transform: translateX(-50%);
-	background-color: #02afe5;
-	padding: 10px;
-	border-radius: 5px;
-	text-align: center;
-	z-index: 1000;
-}
-
+/* 共通のスタイル */
 .floating-button {
 	background-color: #fff000;
 	color: white;
-	padding: 15px 30px;
+	padding: 10px 25px;
 	font-size: 18px;
 	font-weight: bold;
 	border-radius: 25px;
 	text-decoration: none;
 	display: inline-block;
+	text-align: center;
 	transition: background-color 0.3s;
 }
 
 .floating-button:hover {
 	background-color: #e0d100;
+}
+
+/* PC用スタイル */
+@media (min-width: 768px) {
+	.floating-button {
+		width: 250px;
+		/* PC用横幅 */
+		padding: 15px 30px;
+		/* PC用パディング */
+	}
+}
+
+/* SP用スタイル */
+@media (max-width: 767px) {
+	.floating-button {
+		width: 200px;
+		/* SP用横幅 */
+		padding: 12px 20px;
+		/* SP用パディング */
+		font-size: 16px;
+		/* SP用フォントサイズ */
+	}
 }
