@@ -281,12 +281,13 @@ main h3 {
 #menubar nav a {
 	text-decoration: none;
 	display: block;
-	background: rgba(226, 247, 121, 0.5);
+	background: rgba(240, 245, 86, 0.803);
 	/*背景色。0,0,0は黒のことで0.5は色が50%出た状態。*/
 	border: 1px solid rgba(99, 217, 244, 0.3);
 	/*枠線の幅、線種、色。255,255,255は白のことで0.3は色が30%出た状態。*/
 	color: #fff;
 	/*文字色*/
+	font-weight: bold;
 	padding: 0.5rem;
 	/*余白*/
 	margin: 0.5rem 0;
