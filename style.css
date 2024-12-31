@@ -811,17 +811,32 @@ footer a {
 /*お問い合わせボタン
 ---------------------------------------------------------------------------*/
 
-/* 共通のスタイル */
+.floating-banner {
+	position: fixed;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #02afe5;
+	padding: 10px;
+	border-radius: 5px;
+	text-align: center;
+	z-index: 1000;
+}
+
 .floating-button {
 	background-color: #fff000;
 	color: white;
 	padding: 10px 25px;
+	/* 上下の余白を減らし、横幅はそのまま */
 	font-size: 18px;
 	font-weight: bold;
 	border-radius: 25px;
 	text-decoration: none;
 	display: inline-block;
+	width: 250px;
+	/* 横幅を250pxに指定 */
 	text-align: center;
+	/* ボタン内の文字を中央揃え */
 	transition: background-color 0.3s;
 }
 
@@ -834,8 +849,8 @@ footer a {
 	.floating-button {
 		width: 250px;
 		/* PC用横幅 */
-		padding: 15px 30px;
-		/* PC用パディング */
+		padding: 10px 25px;
+		/* 上下の余白と左右の余白を指定 */
 	}
 }
 
@@ -844,8 +859,8 @@ footer a {
 	.floating-button {
 		width: 200px;
 		/* SP用横幅 */
-		padding: 12px 20px;
-		/* SP用パディング */
+		padding: 10px 20px;
+		/* SP用の余白 */
 		font-size: 16px;
 		/* SP用フォントサイズ */
 	}
