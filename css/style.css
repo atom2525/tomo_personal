@@ -1,0 +1,735 @@
+h1,
+h2,
+h3,
+h4 {
+	font-weight: 400;
+}
+
+/*Google Fontsの読み込み
+---------------------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&display=swap');
+
+/*Font Awesomeの読み込み
+---------------------------------------------------------------------------*/
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+
+/*lightbox.cssの読み込み
+---------------------------------------------------------------------------*/
+@import url(https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.css);
+
+
+/*opa1のキーフレーム設定
+---------------------------------------------------------------------------*/
+@keyframes opa1 {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+/*animation1のキーフレーム設定（開閉ブロックのアニメーションに使用）
+---------------------------------------------------------------------------*/
+@keyframes animation1 {
+	0% {
+		left: -200px;
+	}
+
+	100% {
+		left: 0px;
+	}
+}
+
+/*body
+---------------------------------------------------------------------------*/
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	/* 余白をなくす */
+	padding-top: 10vw;
+	/* ヘッダー分のスペースを確保 */
+	font-size: 13px;
+	overflow-x: hidden;
+	/* 横スクロール防止 */
+}
+
+@media screen and (min-width: 900px) {
+
+	html,
+	body {
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+
+	html,
+	body {
+		padding-top: 10vw;
+		/* ヘッダー分のスペースを確保 */
+		overflow-y: auto;
+		min-height: 100vh;
+		/* 高さを100%に */
+	}
+
+	body::after {
+		content: "";
+		display: block;
+		height: 50px;
+		/* 余白の高さを調整 */
+	}
+}
+
+/* コンテンツの隙間を防ぐ */
+.container {
+	max-width: 100vw;
+	width: 100%;
+	padding: 0;
+	/* 余白なし */
+	margin: 0 auto;
+	/* 左右の余白をなくす */
+	overflow-x: hidden;
+}
+
+/* 画像や要素のはみ出しを防ぐ */
+img,
+video {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* ヘッダー・フッターの余白をなくす */
+header,
+footer {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+
+/*header（ロゴとメニューが入ったブロック）
+---------------------------------------------------------------------------*/
+header {
+	width: 100%;
+	/* 幅 */
+	height: auto;
+	/* 高さを親要素に合わせて100%に設定 */
+	padding: 10vw 2vw;
+	/* ヘッダー内の余白。上下、左右への順番。 */
+	text-align: center;
+	/* テキストをセンタリング */
+	position: fixed;
+	/* 最上部に固定 */
+	top: 12px;
+	/* 最上部に配置 */
+	left: 0;
+	/* 左端に配置 */
+	z-index: 1000;
+	/* 他の要素よりも前面に表示 */
+}
+
+header .image {
+	width: 100%;
+	/* 親要素に合わせる */
+	height: auto;
+	/* 画像サイズに合わせる */
+	display: flex;
+	justify-content: center;
+	/* 水平方向の中央配置 */
+	align-items: center;
+	/* 垂直方向の中央配置 */
+}
+
+header .image .logo {
+	position: absolute;
+	/* header を基準に配置 */
+	width: 150px;
+	right: 30px;
+	overflow: hidden;
+	/* はみ出た部分を非表示に */
+}
+
+header .image .logo img {
+	width: 100%;
+	height: 80%;
+	/* 縦を削る */
+	overflow: hidden;
+	/* はみ出た部分を非表示に */
+}
+
+
+/*画面幅900px以上の追加指定*/
+@media screen and (min-width:900px) {
+
+	header {
+		width: 100%;
+		/*幅*/
+		height: auto;
+		/* 高さを親要素に合わせて100%に設定 */
+		padding: 15vw 2vw;
+		position: fixed;
+		/*スクロールしても動かないようにする設定*/
+		left: 0px;
+		top: 20px;
+	}
+
+}
+
+/*追加指定ここまで*/
+
+/*画面の高さが500px以下の追加指定*/
+@media screen and (max-height:500px) {
+
+	header {
+		padding: 40px;
+		position: relative;
+		/* absolute ではなく relative にする */
+		overflow: auto;
+		/* 必要に応じてスクロール可能に */
+		max-height: 100vh;
+		/* 画面の高さを超えないように調整 */
+	}
+
+}
+
+/*追加指定ここまで*/
+
+/*mainブロック（右側のsectionを囲むブロック）
+---------------------------------------------------------------------------*/
+
+main {
+	padding: 10px;
+	margin-top: 10px;
+	/* header と main の間に余白を作る */
+	margin-bottom: 50px overflow: visible;
+	/* 画像がはみ出しても表示される */
+}
+
+/* 画面幅900px以上の追加指定 */
+@media screen and (min-width: 900px) {
+	main {
+		padding: 8vw 2vw;
+		/* header の width に合わせる */
+		margin-bottom: 50px overflow: visible;
+		/* 画像がはみ出しても表示されるように */
+	}
+
+	.label {
+		width: 100%;
+		/* main 内に収まるように幅を調整 */
+		margin-bottom: 50px
+	}
+}
+
+
+/*メニューブロック初期設定
+---------------------------------------------------------------------------*/
+/*メニューをデフォルトで非表示*/
+#menubar {
+	display: none;
+}
+
+/*上で非表示にしたメニューを表示させる為の設定*/
+.large-screen #menubar {
+	display: block;
+}
+
+.small-screen #menubar.display-block {
+	display: block;
+}
+
+/*3本バーをデフォルトで非表示*/
+#menubar_hdr.display-none {
+	display: none;
+}
+
+
+/*メニュー
+---------------------------------------------------------------------------*/
+/*メニューブロック全体*/
+#menubar ul {
+	margin: 4rem 0;
+	/*メニューブロックの外側に空けるスペース*/
+}
+
+/*メニュー一個あたり*/
+#menubar nav a {
+	text-decoration: none;
+	display: block;
+	background: rgba(240, 245, 86, 0.803);
+	/*背景色。0,0,0は黒のことで0.5は色が50%出た状態。*/
+	border: 1px solid rgba(99, 217, 244, 0.3);
+	/*枠線の幅、線種、色。255,255,255は白のことで0.3は色が30%出た状態。*/
+	color: #fff;
+	/*文字色*/
+	font-weight: bold;
+	padding: 0.5rem;
+	/*余白*/
+	margin: 0.5rem 0;
+	/*メニューの外側に空けるスペース。上下、左右。*/
+	border-radius: 5px;
+	/*角を丸くする指定*/
+}
+
+/*マウスオン次*/
+#menubar nav a:hover {
+	background: rgba(0, 0, 0, 0.9);
+	/*背景色。透明度を変更して濃くします。*/
+	border: 1px solid rgba(255, 255, 255, 0.9);
+	/*枠線。透明度を変更して濃くします。*/
+}
+
+/*900px以下画面でのメニュー
+---------------------------------------------------------------------------*/
+/*メニューブロック全体*/
+.small-screen #menubar.display-block {
+	position: fixed;
+	overflow: auto;
+	z-index: 100;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	padding-top: 80px;
+	background: rgba(140, 207, 241, 0.8);
+	/*背景色*/
+	animation: animation1 0.2s both;
+	/*animation1を実行する。0.2sは0.2秒の事。*/
+}
+
+.small-screen #menubar ul {
+	margin: 3rem;
+	/*メニューブロックの外側に空けるスペース*/
+}
+
+
+/*３本バー（ハンバーガー）アイコン設定
+---------------------------------------------------------------------------*/
+/*３本バーを囲むブロック*/
+#menubar_hdr {
+	animation: opa1 0s 0.2s both;
+	position: fixed;
+	z-index: 101;
+	cursor: pointer;
+	left: 30px;
+	/*右からの配置場所指定*/
+	top: 30px;
+	/*上からの配置場所指定*/
+	padding: 16px 14px;
+	/*上下、左右への余白*/
+	width: 55px;
+	/*幅（３本バーが出ている場合の幅になります）*/
+	height: 55px;
+	/*高さ*/
+	display: flex;
+	/*flexボックスを使う指定*/
+	flex-direction: column;
+	/*子要素（３本バー）部分。flexはデフォルトで横並びになるので、それを縦並びに変更。*/
+	justify-content: space-between;
+	/*並びかたの種類の指定*/
+	background: #02afe5;
+	/*背景色*/
+}
+
+/*バー１本あたりの設定*/
+#menubar_hdr span {
+	display: block;
+	transition: 0.3s;
+	/*アニメーションにかける時間。0.3秒。*/
+	border-top: 1.5px solid #fff000;
+	/*線の幅、線種、色*/
+}
+
+/*×印が出ている状態の設定。※１本目および２本目のバーの共通設定。*/
+#menubar_hdr.ham span:nth-of-type(1),
+#menubar_hdr.ham span:nth-of-type(3) {
+	transform-origin: center center;
+	/*変形の起点。センターに。*/
+	width: 20px;
+	/*バーの幅*/
+}
+
+/*×印が出ている状態の設定。※１本目のバー。*/
+#menubar_hdr.ham span:nth-of-type(1) {
+	transform: rotate(45deg) translate(3.8px, 5px);
+	/*回転45°と、X軸Y軸への移動距離の指定*/
+}
+
+/*×印が出ている状態の設定。※３本目のバー。*/
+#menubar_hdr.ham span:nth-of-type(3) {
+	transform: rotate(-45deg) translate(3.8px, -5px);
+	/*回転-45°と、X軸Y軸への移動距離の指定*/
+}
+
+/*×印が出ている状態の設定。※２本目のバー。*/
+#menubar_hdr.ham span:nth-of-type(2) {
+	display: none;
+	/*２本目は使わないので非表示にする*/
+}
+
+
+/*メニュー内にあるソーシャルメディアのアイコン
+---------------------------------------------------------------------------*/
+ul.icons {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+}
+
+ul.icons li {
+	margin-right: 10px;
+	/*アイコン同士の余白*/
+}
+
+ul.icons i {
+	font-size: 20px;
+	/*Font Awesomeのアイコンサイズ*/
+}
+
+/*PAGE TOP（↑）設定
+---------------------------------------------------------------------------*/
+.pagetop-show {
+	display: block;
+}
+
+/*ボタンの設定*/
+.pagetop a {
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	z-index: 99;
+	animation: opa1 0.2s 0.2s both;
+	/*一瞬ボタンが出ちゃうのを隠す為の応急措置*/
+	position: fixed;
+	/*スクロールに追従しない(固定で表示)為の設定*/
+	right: 20px;
+	/*右からの配置場所指定*/
+	bottom: 20px;
+	/*下からの配置場所指定*/
+	color: #fff;
+	/*文字色*/
+	font-size: 1.5rem;
+	/*文字サイズ*/
+	background: rgba(0, 0, 0, 0.2);
+	/*背景色。0,0,0は黒の事で0.2は色が20%出た状態。*/
+	width: 60px;
+	/*幅*/
+	line-height: 60px;
+	/*高さ*/
+	border-radius: 50%;
+	/*円形にする*/
+}
+
+
+/*label
+---------------------------------------------------------------------------*/
+
+.label {
+	width: 100%;
+	/* main 内に収まるように幅を調整 */
+	box-sizing: border-box;
+	/* パディングやボーダーを幅に含める */
+	padding: 5px;
+	/* 必要に応じてパディングを調整 */
+}
+
+.WELCOME-evolve {
+	font-size: 48px;
+	line-height: 25px;
+	text-align: right;
+	color: transparent;
+	letter-spacing: 0;
+}
+
+.label .text-wrapper {
+	color: #3ac7f4;
+	font-family: 'Archivo Black', sans-serif;
+	line-height: 49px;
+}
+
+.label .text-wrapper-2 {
+	font-family: 'Archivo Black', sans-serif;
+	color: #00000099;
+	font-size: 18px;
+	line-height: 10px;
+}
+
+/*view
+---------------------------------------------------------------------------*/
+.box {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0;
+	/* 上下に20pxの余白を追加 */
+	margin-bottom: 80vh;
+	/* 画面の高さの5%を余白に */
+}
+
+.box .overlap-group {
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.box .overlap-group img {
+	position: absolute;
+	/* 画像を重ねるため絶対配置 */
+	object-fit: cover;
+	max-width: 100%;
+	/* 画像が大きくなりすぎないように */
+}
+
+.box .before {
+	width: 243px;
+	height: 361px;
+	top: 10px;
+	/* 左斜め上に配置するため、topをマイナスで設定 */
+	left: 10px;
+	/* 左斜め上に配置するため、leftをマイナスで設定 */
+	z-index: 1;
+	/* 他の画像より後ろに表示 */
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+	/* シャドウの設定 */
+	border-radius: 20px;
+	/* 角を丸くする */
+
+}
+
+.box .beforebottom {
+	position: absolute;
+	top: -10px;
+	/* 左斜め上に配置するため、topをマイナスで設定 */
+	left: -5px;
+	/* 左斜め上に配置するため、leftをマイナスで設定 */
+	width: 100px;
+	/* ラベル画像のサイズ調整 */
+	height: auto;
+	/* 高さを自動で調整 */
+	z-index: 2;
+	/* beforeの上に表示 */
+}
+
+.box .after {
+	width: 299px;
+	height: 448px;
+	top: 300px;
+	/* 左斜め上に配置するため、topをマイナスで設定 */
+	left: 100px;
+	/* 左斜め上に配置するため、leftをマイナスで設定 */
+	z-index: 3;
+	/* beforebottomより前に表示 */
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+	/* シャドウの設定 */
+	border-radius: 20px;
+	/* 角を丸くする */
+}
+
+.box .afterbottom {
+	position: absolute;
+	top: 280px;
+	/* 左斜め上に配置するため、topをマイナスで設定 */
+	left: 90px;
+	/* 左斜め上に配置するため、leftをマイナスで設定 */
+	width: 102px;
+	height: 49px;
+	z-index: 4;
+	/* 最前面に表示 */
+}
+
+.box .arrow {
+	position: absolute;
+	width: 170px;
+	height: 170px;
+	top: 162px;
+	left: 222px;
+	transform: rotate(80deg);
+	/* 45度回転 */
+	z-index: 5;
+	/* 一番前に表示 */
+}
+
+/*profile-text
+---------------------------------------------------------------------------*/
+
+.profile {
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0;
+	/* 上下に20pxの余白を追加 */
+	
+}
+
+.profile .profile-evolve {
+	font-size: 48px;
+	line-height: 25px;
+	text-align: left;
+	color: transparent;
+	letter-spacing: 0;
+}
+
+.profile .text-wrapper-2 {
+	font-family: 'Archivo Black', sans-serif;
+	color: #00000099;
+	font-size: 18px;
+	line-height: 10px;
+}
+
+.profile .span {
+	color: #3ac7f4;
+}
+
+.profile .profile-evolve-2 {
+	font-size: 48px;
+	line-height: 25px;
+	text-align: right;
+	color: transparent;
+	letter-spacing: 0;
+	margin-top: 5vh;
+}
+
+.profile .text-wrapper {
+	color: #3ac7f4;
+	font-family: 'Archivo Black', sans-serif;
+	line-height: 49px;
+}
+
+/*profile-main
+---------------------------------------------------------------------------*/
+
+.profile-main {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    margin-bottom: 5vh;
+    min-height: 500px; /* 必要に応じて高さを調整 */
+	display: flex;
+    flex-direction: column; /* 子要素を縦並びに */
+}
+
+.profile-main .image {
+    width: 431px;
+    height: auto; /* 画像の高さを自動調整 */
+	margin-bottom: 20px; /* 画像の下に余白を作る */
+}
+
+
+.profile-main .img-1 {
+    object-fit: cover;
+    display: block;
+	border-radius: 50%;
+	width: 150px;  /* 画像のサイズ */
+    height: 150px; /* 画像のサイズ */
+    border-radius: 50%;
+    overflow: hidden; /* 枠からはみ出た部分をカット */
+    position: absolute;  /* 絶対位置で配置 */
+    top: 55%;             /* 縦中央に配置 */
+    left: 50%;            /* 横中央に配置 */
+    transform: translate(-50%, -50%);  /* 完全に中央に調整 */
+}
+
+.profile-main .img {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-main .image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 202, 255, 0.3); /* #1acaff の透過30% */
+    pointer-events: none; /* 画像のクリックを妨げない */
+}
+
+
+.profile-main .evolve-empower-exist {
+    position: relative; /* absolute を削除 */
+    text-align: center;
+    background-color: #1acaff;
+    padding: 20px;
+    width: 100%;
+}
+
+.profile-main .profile-text-1 {
+	padding: 10px;
+    font-family: "IBM Plex Mono", Helvetica, sans-serif; /* フォント指定を修正 */
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+}
+
+.profile-main .profile-text {
+	padding: 40px;
+    font-family: "IBM Plex Mono", Helvetica, sans-serif; /* フォント指定を修正 */
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+}
+
+.profile-main .text-wrapper-1 {
+	font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    color: transparent;
+    font-size: 52px;
+    letter-spacing: 0;
+    color: #ffffff; /* "TOMOYUKI" の色 */
+}
+
+.profile-main .span {
+	padding: 20px;
+	-webkit-text-stroke: 1px #ffffff;
+	font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    color: transparent;
+    font-size: 52px;
+    letter-spacing: 0;
+    color: #3ac7f4; /* "ICHIHARA" の色 */
+}
+
+/*price
+---------------------------------------------------------------------------*/
+
+.price {
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0;
+	/* 上下に20pxの余白を追加 */
+	margin-bottom: 5vh;
+	/* 画面の高さの5%を余白に */
+}
+
+.price .price-evolve-2 {
+	font-size: 48px;
+	line-height: 25px;
+	text-align: right;
+	color: transparent;
+	letter-spacing: 0;
+	margin-top: 5vh;
+}
+
+.price .text-wrapper {
+	color: #3ac7f4;
+	font-family: 'Archivo Black', sans-serif;
+	line-height: 49px;
+}
