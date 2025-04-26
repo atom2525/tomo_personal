@@ -1,5 +1,9 @@
-@charset "utf-8";
-
+h1,
+h2,
+h3,
+h4 {
+	font-weight: 400;
+}
 
 /*Google Fontsの読み込み
 ---------------------------------------------------------------------------*/
@@ -26,7 +30,6 @@
 	}
 }
 
-
 /*animation1のキーフレーム設定（開閉ブロックのアニメーションに使用）
 ---------------------------------------------------------------------------*/
 @keyframes animation1 {
@@ -39,165 +42,141 @@
 	}
 }
 
-
-
-/*全体の設定
+/*body
 ---------------------------------------------------------------------------*/
-body * {
-	box-sizing: border-box;
-}
 
 html,
 body {
 	height: 100%;
+	width: 100%;
+	margin: 0;
+	/* 余白をなくす */
+	padding-top: 10vw;
+	/* ヘッダー分のスペースを確保 */
 	font-size: 13px;
-	/*基準となるフォントサイズ。*/
+	overflow-x: hidden;
+	/* 横スクロール防止 */
 }
 
-/*画面幅900px以上の追加指定*/
-@media screen and (min-width:900px) {
+@media screen and (min-width: 900px) {
 
 	html,
 	body {
 		font-size: 14px;
-		/*基準となるフォントサイズ。*/
+	}
+}
+
+@media screen and (max-width: 500px) {
+
+	html,
+	body {
+		padding-top: 10vw;
+		/* ヘッダー分のスペースを確保 */
+		overflow-y: auto;
+		min-height: 100vh;
+		/* 高さを100%に */
 	}
 
+	body::after {
+		content: "";
+		display: block;
+		height: 50px;
+		/* 余白の高さを調整 */
+	}
 }
 
-/*追加指定ここまで*/
-
-body {
-	font-family: "M PLUS 1", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-	/*フォント種類*/
-	font-weight: 300;
-	font-optical-sizing: auto;
-	letter-spacing: 0.1rem;
-	text-indent: 0.1rem;
-	-webkit-text-size-adjust: none;
-	margin: 0;
+/* コンテンツの隙間を防ぐ */
+.container {
+	max-width: 100vw;
+	width: 100%;
 	padding: 0;
-	line-height: 2.5;
-	/*行間*/
-	background: #000;
-	/*背景色*/
-	color: #fff;
-	/*文字色*/
+	/* 余白なし */
+	margin: 0 auto;
+	/* 左右の余白をなくす */
+	overflow-x: hidden;
 }
 
-/*リセット*/
-figure {
-	margin: 0;
-}
-
-dd {
-	margin: 0;
-}
-
-nav,
-ul,
-li {
-	margin: 0;
-	padding: 0;
-}
-
-nav ul {
-	list-style: none;
-}
-
-h1,
-h2,
-h3,
-h4 {
-	font-weight: 400;
-}
-
-/*table全般の設定*/
-table {
-	border-collapse: collapse;
-}
-
-/*画像全般の設定*/
-img {
-	border: none;
-	max-width: 100%;
-	height: auto;
-	vertical-align: middle;
-}
-
-/*videoタグ*/
+/* 画像や要素のはみ出しを防ぐ */
+img,
 video {
 	max-width: 100%;
+	height: auto;
+	display: block;
 }
 
-/*iframeタグ*/
-iframe {
+/* ヘッダー・フッターの余白をなくす */
+header,
+footer {
 	width: 100%;
-}
-
-/*他*/
-input {
-	font-size: 1rem;
-}
-
-strong {
-	font-weight: 500;
-}
-
-
-/*リンクテキスト全般の設定
----------------------------------------------------------------------------*/
-a {
-	color: #fff;
-	/*文字色*/
-	transition: 0.3s;
-	/*hoverまでにかける時間。0.3秒。*/
-}
-
-/*マウスオン時*/
-a:hover {
-	text-decoration: none;
+	margin: 0;
+	padding: 0;
 }
 
 
 /*header（ロゴとメニューが入ったブロック）
 ---------------------------------------------------------------------------*/
 header {
-	width: 250px;
-	/*幅*/
-	padding: 0 2vw;
-	/*ヘッダー内の余白。上下、左右への順番。*/
-	margin-top: 5vw;
-	/*ヘッダーの上に空けるスペース*/
+	width: 100%;
+	/* 幅 */
+	height: auto;
+	/* 高さを親要素に合わせて100%に設定 */
+	padding: 10vw 2vw;
+	/* ヘッダー内の余白。上下、左右への順番。 */
 	text-align: center;
-	/*テキストをセンタリング*/
+	/* テキストをセンタリング */
+	position: fixed;
+	/* 最上部に固定 */
+	top: 12px;
+	/* 最上部に配置 */
+	left: 0;
+	/* 左端に配置 */
+	z-index: 1000;
+	/* 他の要素よりも前面に表示 */
 }
 
-/*ロゴ*/
-header #logo img {
-	display: block;
+header .image {
+	width: 100%;
+	/* 親要素に合わせる */
+	height: auto;
+	/* 画像サイズに合わせる */
+	display: flex;
+	justify-content: center;
+	/* 水平方向の中央配置 */
+	align-items: center;
+	/* 垂直方向の中央配置 */
 }
 
-header #logo {
-	padding: 0;
-	margin: 0;
+header .image .logo {
+	position: absolute;
+	/* header を基準に配置 */
+	width: 150px;
+	right: 30px;
+	overflow: hidden;
+	/* はみ出た部分を非表示に */
 }
 
-/*ロゴ下の小文字*/
-header #logo span {
-	display: block;
-	font-size: 0.7rem;
-	/*文字サイズを70%に*/
+header .image .logo img {
+	width: 100%;
+	height: 80%;
+	/* 縦を削る */
+	overflow: hidden;
+	/* はみ出た部分を非表示に */
 }
+
 
 /*画面幅900px以上の追加指定*/
 @media screen and (min-width:900px) {
 
 	header {
+		width: 100%;
+		/*幅*/
+		height: auto;
+		/* 高さを親要素に合わせて100%に設定 */
+		padding: 15vw 2vw;
 		position: fixed;
 		/*スクロールしても動かないようにする設定*/
 		left: 0px;
-		top: 0px;
+		top: 20px;
 	}
 
 }
@@ -208,43 +187,45 @@ header #logo span {
 @media screen and (max-height:500px) {
 
 	header {
-		position: absolute;
-		/*メニューが切れて見えなくならないように、fixedを中止する*/
+		padding: 40px;
+		position: relative;
+		/* absolute ではなく relative にする */
+		overflow: auto;
+		/* 必要に応じてスクロール可能に */
+		max-height: 100vh;
+		/* 画面の高さを超えないように調整 */
 	}
 
 }
 
 /*追加指定ここまで*/
-
 
 /*mainブロック（右側のsectionを囲むブロック）
 ---------------------------------------------------------------------------*/
 
-/*画面幅900px以上の追加指定*/
-@media screen and (min-width:900px) {
+main {
+	padding: 10px;
+	margin-top: 10px;
+	/* header と main の間に余白を作る */
+	margin-bottom: 50px overflow: visible;
+	/* 画像がはみ出しても表示される */
+}
 
+/* 画面幅900px以上の追加指定 */
+@media screen and (min-width: 900px) {
 	main {
-		margin-left: 250px;
-		/*headerのwidthに合わせる*/
+		padding: 8vw 2vw;
+		/* header の width に合わせる */
+		margin-bottom: 50px overflow: visible;
+		/* 画像がはみ出しても表示されるように */
 	}
 
+	.label {
+		width: 100%;
+		/* main 内に収まるように幅を調整 */
+		margin-bottom: 50px
+	}
 }
-
-/*追加指定ここまで*/
-
-
-/*main内のh2*/
-main h2 {
-	font-size: 2.5rem;
-	/*文字サイズを2.5倍*/
-}
-
-/*main内のh3*/
-main h3 {
-	font-size: 1.5rem;
-	/*文字サイズを1.5倍*/
-}
-
 
 
 /*メニューブロック初期設定
@@ -273,7 +254,7 @@ main h3 {
 ---------------------------------------------------------------------------*/
 /*メニューブロック全体*/
 #menubar ul {
-	margin: 3rem 0;
+	margin: 4rem 0;
 	/*メニューブロックの外側に空けるスペース*/
 }
 
@@ -336,15 +317,15 @@ main h3 {
 	position: fixed;
 	z-index: 101;
 	cursor: pointer;
-	right: 30px;
+	left: 30px;
 	/*右からの配置場所指定*/
 	top: 30px;
 	/*上からの配置場所指定*/
 	padding: 16px 14px;
 	/*上下、左右への余白*/
-	width: 46px;
+	width: 55px;
 	/*幅（３本バーが出ている場合の幅になります）*/
-	height: 46px;
+	height: 55px;
 	/*高さ*/
 	display: flex;
 	/*flexボックスを使う指定*/
@@ -413,272 +394,6 @@ ul.icons i {
 	/*Font Awesomeのアイコンサイズ*/
 }
 
-
-/*section
----------------------------------------------------------------------------*/
-/*フェード設定*/
-.section::before {
-	opacity: 0;
-	/* 初期状態では非表示 */
-	transition: opacity 1s;
-	/* 1秒かけてフェードイン/フェードアウト */
-}
-
-.section.active::before {
-	opacity: 1;
-	/* フェードイン状態 */
-}
-
-.section.inactive::before {
-	opacity: 0;
-	/* フェードアウト状態 */
-}
-
-/*section要素*/
-section {
-	padding: 2vw 5vw;
-	/*ボックス内の余白。上下、左右への順番。*/
-}
-
-/*４つのsectionブロックの共通設定*/
-#section1,
-#section2,
-#section3,
-#section4,
-#section5 {
-	min-height: calc(100dvh - 50px);
-	/*最低の高さ。100dvhは画面の高さ100%のこと。50pxは下のmarginの値。*/
-	margin-bottom: 50px;
-	/*ボックスの下に空けるスペース*/
-	padding: 5vw;
-	/*ボックス内の余白*/
-}
-
-/*画面幅900px以上の追加指定*/
-@media screen and (min-width:900px) {
-
-	#section1,
-	#section2,
-	#section3,
-	#section4,
-	#section5 {
-		border-radius: 3vw 0 0 3vw;
-		/*角丸の指定。左上、右上、右下、左下への順番。*/
-	}
-
-}
-
-/*追加指定ここまで*/
-
-
-/*背景画像を置く為の設定*/
-#section1::before,
-#section2::before,
-#section3::before,
-#section4::before,
-#section5::before {
-	content: '';
-	position: fixed;
-	z-index: -1;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
-/*section1の設定*/
-#section1 {
-	color: #fff;
-	/*文字色*/
-}
-
-#section1::before {
-	background: url('section1.jpg') no-repeat center center / cover;
-	/*背景画像の読み込み*/
-}
-
-/*section2の設定*/
-#section2 {
-	background-color: rgba(248, 68, 69, 0.6);
-	/*背景色。３つ目までの数字はrgbでの色指定。最後の小数点は透明度。*/
-	color: #fff;
-	/*文字色*/
-}
-
-#section2::before {
-	background: url('section2.jpg') no-repeat center center / cover;
-	/*背景画像の読み込み*/
-}
-
-/*section3の設定*/
-#section3 {
-	background-color: rgba(78, 174, 160, 0.6);
-	/*背景色。３つ目までの数字はrgbでの色指定。最後の小数点は透明度。*/
-	color: #fff;
-	/*文字色*/
-}
-
-#section3::before {
-	background: url('section3.jpg') no-repeat center center / cover;
-	/*背景画像の読み込み*/
-}
-
-/*section4の設定*/
-#section4 {
-	color: #fff;
-	/*文字色*/
-}
-
-#section4::before {
-	background: #646463;
-	/*section4は背景画像ではなく、単に背景色だけ指定しました。*/
-}
-
-/*section5の設定*/
-#section5 {
-	color: #fff;
-	/*文字色*/
-}
-
-#section5::before {
-	background: #333;
-	/*section5は背景画像ではなく、単に背景色だけ指定しました。*/
-}
-
-/*縦向き端末から見た場合に背景画像をチェンジする*/
-@media (orientation: portrait) {
-
-	#section1::before {
-		background-image: url('section1_portrait.jpg');
-	}
-
-	#section2::before {
-		background-image: url('section2_portrait.jpg');
-	}
-
-	#section3::before {
-		background-image: url('section3_portrait.jpg');
-	}
-
-}
-
-/*追加指定ここまで*/
-
-/*背景色を入れない場合（画像だけを表示したい場合）*/
-.no-bgcolor {
-	background-color: transparent !important;
-}
-
-
-/*フッター設定
----------------------------------------------------------------------------*/
-footer small {
-	font-size: 100%;
-}
-
-footer {
-	font-size: 0.8rem;
-	text-align: center;
-	/*内容をセンタリング*/
-	padding-bottom: 1rem;
-}
-
-/*リンクテキスト*/
-footer a {
-	color: inherit;
-	text-decoration: none;
-}
-
-
-/*お知らせブロック
----------------------------------------------------------------------------*/
-/*記事の下に空ける余白*/
-.new dd {
-	padding-bottom: 1rem;
-}
-
-/*ブロック内のspan。日付の横のアイコン的な部分の共通設定*/
-.new dt span {
-	display: inline-block;
-	text-align: center;
-	line-height: 1.8;
-	/*行間（アイコンの高さ）*/
-	border-radius: 3px;
-	/*角を丸くする指定*/
-	padding: 0 0.5rem;
-	/*上下、左右へのブロック内の余白*/
-	width: 6rem;
-	/*幅。６文字分。*/
-	transform: scale(0.8);
-	/*80%のサイズに縮小*/
-	background: rgba(255, 255, 255, 0.8);
-	/*背景色*/
-	color: #333;
-	/*文字色*/
-}
-
-/*画面幅700px以上の追加指定*/
-@media screen and (min-width:700px) {
-
-	/*ブロック全体*/
-	.new {
-		display: grid;
-		/*gridを使う指定*/
-		grid-template-columns: auto 1fr;
-		/*横並びの指定。日付とアイコン部分の幅は自動で、内容が入るブロックは残り幅一杯とる。*/
-	}
-
-}
-
-/*追加指定ここまで*/
-
-
-/*list-grid（gallery.htmlでサムネイルを表示している部分の設定です）
----------------------------------------------------------------------------*/
-/*listブロックを囲む外側のボックス*/
-.list-grid-trimming {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	/*ここの「4」の数字が横に並べる数です。3列がいいなら(3, 1fr)です。*/
-	gap: 1rem;
-	/*マージン的な数値。サムネイル間を１文字分あけます。*/
-}
-
-/*ボックスを正方形にトリミングする為の指定なので変更しない。*/
-.list-grid-trimming .list {
-	position: relative;
-	overflow: hidden;
-	height: 0;
-	padding-top: 100%;
-}
-
-.list-grid-trimming .list a {
-	display: block;
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-}
-
-.list-grid-trimming .list img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: center;
-	transition: 0.5s;
-	/*マウスオン時にかける時間。0.5秒。*/
-}
-
-/*マウスオン時の画像*/
-.list-grid-trimming .list img:hover {
-	transform: scale(1.1);
-	/*1.1倍に拡大*/
-	filter: contrast(1.3);
-	/*コントラストを1.3倍*/
-}
-
-
 /*PAGE TOP（↑）設定
 ---------------------------------------------------------------------------*/
 .pagetop-show {
@@ -713,153 +428,308 @@ footer a {
 	/*円形にする*/
 }
 
-/*その他
----------------------------------------------------------------------------*/
-.clearfix::after {
-	content: "";
-	display: block;
-	clear: both;
-}
 
-.l {
-	text-align: left !important;
-}
-
-.c {
-	text-align: center !important;
-}
-
-.r {
-	text-align: right !important;
-}
-
-.ws {
-	width: 95%;
-	display: block;
-}
-
-.wl {
-	width: 95%;
-	display: block;
-}
-
-.mb0 {
-	margin-bottom: 0px !important;
-}
-
-.mb30 {
-	margin-bottom: 30px !important;
-}
-
-.look {
-	display: inline-block;
-	padding: 0px 10px;
-	background: #000;
-	border: 1px solid #fff;
-	border-radius: 3px;
-	margin: 5px 0;
-	word-break: break-all;
-}
-
-.small {
-	font-size: 0.75em;
-}
-
-.large {
-	font-size: 2em;
-	letter-spacing: 0.1em;
-}
-
-.color-check,
-.color-check a {
-	color: #ffcf0d;
-}
-
-.pc {
-	display: none;
-}
-
-.dn {
-	display: none !important;
-}
-
-.block {
-	display: block !important;
-}
-
-/*画面幅900px以上の追加指定*/
-@media screen and (min-width:900px) {
-
-	.ws {
-		width: 48%;
-		display: inline;
-	}
-
-	.sh {
-		display: none;
-	}
-
-	.pc {
-		display: block;
-	}
-
-}
-
-/*画面幅900px以上の追加指定ここまで*/
-
-
-
-/*お問い合わせボタン
+/*label
 ---------------------------------------------------------------------------*/
 
-.floating-banner {
-	position: fixed;
-	bottom: 25px;
-	left: 50%;
-	transform: translateX(-50%);
-	background-color: #02afe5;
-	padding: 13px 18px;
-	border-radius: 29px;
-	text-align: center;
-	z-index: 1000;
+.label {
+	width: 100%;
+	/* main 内に収まるように幅を調整 */
+	box-sizing: border-box;
+	/* パディングやボーダーを幅に含める */
+	padding: 5px;
+	/* 必要に応じてパディングを調整 */
 }
 
-.floating-button {
-	background-color: #fff000;
-	color: white;
+.WELCOME-evolve {
+	font-size: 48px;
+	line-height: 25px;
+	text-align: right;
+	color: transparent;
+	letter-spacing: 0;
+}
+
+.label .text-wrapper {
+	color: #3ac7f4;
+	font-family: 'Archivo Black', sans-serif;
+	line-height: 49px;
+}
+
+.label .text-wrapper-2 {
+	font-family: 'Archivo Black', sans-serif;
+	color: #00000099;
 	font-size: 18px;
-	font-weight: bold;
-	border-radius: 25px;
-	text-decoration: none;
-	display: inline-block;
-	/* 横幅を250pxに指定 */
-	text-align: center;
-	/* ボタン内の文字を中央揃え */
-	transition: background-color 0.3s;
+	line-height: 10px;
 }
 
-.floating-button:hover {
-	background-color: #e0d100;
+/*view
+---------------------------------------------------------------------------*/
+.box {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0;
+	/* 上下に20pxの余白を追加 */
+	margin-bottom: 80vh;
+	/* 画面の高さの5%を余白に */
 }
 
-/* PC用スタイル */
-@media (min-width: 768px) {
-	.floating-button {
-		width: 230px;
-		/* PC用横幅 */
-		padding: 13px 20px;
-		/* 上下の余白と左右の余白を指定 */
-	}
+.box .overlap-group {
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 100%;
 }
 
-/* SP用スタイル */
-@media (max-width: 767px) {
-	.floating-button {
-		width: 200px;
-		/* SP用横幅 */
-		padding: 10px 20px;
-		/* SP用の余白 */
-		font-size: 16px;
-		/* SP用フォントサイズ */
-	}
+.box .overlap-group img {
+	position: absolute;
+	/* 画像を重ねるため絶対配置 */
+	object-fit: cover;
+	max-width: 100%;
+	/* 画像が大きくなりすぎないように */
+}
+
+.box .before {
+	width: 243px;
+	height: 361px;
+	top: 10px;
+	/* 左斜め上に配置するため、topをマイナスで設定 */
+	left: 10px;
+	/* 左斜め上に配置するため、leftをマイナスで設定 */
+	z-index: 1;
+	/* 他の画像より後ろに表示 */
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+	/* シャドウの設定 */
+	border-radius: 20px;
+	/* 角を丸くする */
+
+}
+
+.box .beforebottom {
+	position: absolute;
+	top: -10px;
+	/* 左斜め上に配置するため、topをマイナスで設定 */
+	left: -5px;
+	/* 左斜め上に配置するため、leftをマイナスで設定 */
+	width: 100px;
+	/* ラベル画像のサイズ調整 */
+	height: auto;
+	/* 高さを自動で調整 */
+	z-index: 2;
+	/* beforeの上に表示 */
+}
+
+.box .after {
+	width: 299px;
+	height: 448px;
+	top: 300px;
+	/* 左斜め上に配置するため、topをマイナスで設定 */
+	left: 100px;
+	/* 左斜め上に配置するため、leftをマイナスで設定 */
+	z-index: 3;
+	/* beforebottomより前に表示 */
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+	/* シャドウの設定 */
+	border-radius: 20px;
+	/* 角を丸くする */
+}
+
+.box .afterbottom {
+	position: absolute;
+	top: 280px;
+	/* 左斜め上に配置するため、topをマイナスで設定 */
+	left: 90px;
+	/* 左斜め上に配置するため、leftをマイナスで設定 */
+	width: 102px;
+	height: 49px;
+	z-index: 4;
+	/* 最前面に表示 */
+}
+
+.box .arrow {
+	position: absolute;
+	width: 170px;
+	height: 170px;
+	top: 162px;
+	left: 222px;
+	transform: rotate(80deg);
+	/* 45度回転 */
+	z-index: 5;
+	/* 一番前に表示 */
+}
+
+/*profile-text
+---------------------------------------------------------------------------*/
+
+.profile {
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0;
+	/* 上下に20pxの余白を追加 */
+	
+}
+
+.profile .profile-evolve {
+	font-size: 48px;
+	line-height: 25px;
+	text-align: left;
+	color: transparent;
+	letter-spacing: 0;
+}
+
+.profile .text-wrapper-2 {
+	font-family: 'Archivo Black', sans-serif;
+	color: #00000099;
+	font-size: 18px;
+	line-height: 10px;
+}
+
+.profile .span {
+	color: #3ac7f4;
+}
+
+.profile .profile-evolve-2 {
+	font-size: 48px;
+	line-height: 25px;
+	text-align: right;
+	color: transparent;
+	letter-spacing: 0;
+	margin-top: 5vh;
+}
+
+.profile .text-wrapper {
+	color: #3ac7f4;
+	font-family: 'Archivo Black', sans-serif;
+	line-height: 49px;
+}
+
+/*profile-main
+---------------------------------------------------------------------------*/
+
+.profile-main {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    margin-bottom: 5vh;
+    min-height: 500px; /* 必要に応じて高さを調整 */
+	display: flex;
+    flex-direction: column; /* 子要素を縦並びに */
+}
+
+.profile-main .image {
+    width: 431px;
+    height: auto; /* 画像の高さを自動調整 */
+	margin-bottom: 20px; /* 画像の下に余白を作る */
+}
+
+
+.profile-main .img-1 {
+    object-fit: cover;
+    display: block;
+	border-radius: 50%;
+	width: 150px;  /* 画像のサイズ */
+    height: 150px; /* 画像のサイズ */
+    border-radius: 50%;
+    overflow: hidden; /* 枠からはみ出た部分をカット */
+    position: absolute;  /* 絶対位置で配置 */
+    top: 55%;             /* 縦中央に配置 */
+    left: 50%;            /* 横中央に配置 */
+    transform: translate(-50%, -50%);  /* 完全に中央に調整 */
+}
+
+.profile-main .img {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-main .image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 202, 255, 0.3); /* #1acaff の透過30% */
+    pointer-events: none; /* 画像のクリックを妨げない */
+}
+
+
+.profile-main .evolve-empower-exist {
+    position: relative; /* absolute を削除 */
+    text-align: center;
+    background-color: #1acaff;
+    padding: 20px;
+    width: 100%;
+}
+
+.profile-main .profile-text-1 {
+	padding: 10px;
+    font-family: "IBM Plex Mono", Helvetica, sans-serif; /* フォント指定を修正 */
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+}
+
+.profile-main .profile-text {
+	padding: 40px;
+    font-family: "IBM Plex Mono", Helvetica, sans-serif; /* フォント指定を修正 */
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+}
+
+.profile-main .text-wrapper-1 {
+	font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    color: transparent;
+    font-size: 52px;
+    letter-spacing: 0;
+    color: #ffffff; /* "TOMOYUKI" の色 */
+}
+
+.profile-main .span {
+	padding: 20px;
+	-webkit-text-stroke: 1px #ffffff;
+	font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    color: transparent;
+    font-size: 52px;
+    letter-spacing: 0;
+    color: #3ac7f4; /* "ICHIHARA" の色 */
+}
+
+/*price
+---------------------------------------------------------------------------*/
+
+.price {
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0;
+	/* 上下に20pxの余白を追加 */
+	margin-bottom: 5vh;
+	/* 画面の高さの5%を余白に */
+}
+
+.price .price-evolve-2 {
+	font-size: 48px;
+	line-height: 25px;
+	text-align: right;
+	color: transparent;
+	letter-spacing: 0;
+	margin-top: 5vh;
+}
+
+.price .text-wrapper {
+	color: #3ac7f4;
+	font-family: 'Archivo Black', sans-serif;
+	line-height: 49px;
 }
